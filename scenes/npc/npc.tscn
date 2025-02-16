@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://6rivbevts6s5"]
+[gd_scene load_steps=10 format=3 uid="uid://6rivbevts6s5"]
 
 [ext_resource type="Script" path="res://scenes/npc/npc.gd" id="1_lcey8"]
 [ext_resource type="Material" uid="uid://bxv0fyffvtfy8" path="res://assets/materials/npc.tres" id="2_caa5o"]
@@ -25,6 +25,9 @@ radial_segments = 8
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0nvu2"]
 height = 1.82974
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_68dfb"]
+radius = 5.0
 
 [node name="NPC" type="StaticBody3D"]
 script = ExtResource("1_lcey8")
@@ -68,3 +71,11 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.915642, 0)
 shape = SubResource("CapsuleShape3D_0nvu2")
+
+[node name="NoticeArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NoticeArea"]
+shape = SubResource("SphereShape3D_68dfb")
+
+[connection signal="body_entered" from="NoticeArea" to="." method="_on_notice_area_body_entered"]
+[connection signal="body_exited" from="NoticeArea" to="." method="_on_notice_area_body_exited"]

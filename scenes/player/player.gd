@@ -18,6 +18,9 @@ const IDLE_MAGNITUDE = 0.03
 var original_head_pos: Vector3
 var original_hands_pos: Vector3
 
+func _enter_tree() -> void:
+	RoomManager.current_room.player = self
+
 func _ready() -> void:
 	original_head_pos = head.position
 	original_hands_pos = hands.global_position
@@ -39,7 +42,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = direction.z * SPEED
 
 		# rotate towards direction
-		visuals.rotation.y = lerp_angle(visuals.rotation.y, -Vector2(direction.x, direction.z).angle() + PI / 2, ROTATION_SPEED * delta)
+		visuals.rotation.y = lerp_angle(visuals.rotation.y, -Vector2(direction.x, direction.z).angle() + PI/2, ROTATION_SPEED * delta)
 
 		# walking animation
 		if is_on_floor():
