@@ -1,8 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://6rivbevts6s5"]
+[gd_scene load_steps=9 format=3 uid="uid://6rivbevts6s5"]
 
 [ext_resource type="Script" path="res://scenes/npc/npc.gd" id="1_lcey8"]
 [ext_resource type="Material" uid="uid://bxv0fyffvtfy8" path="res://assets/materials/npc.tres" id="2_caa5o"]
-[ext_resource type="PackedScene" uid="uid://cc32maia2u251" path="res://assets/models/body.blend" id="3_5gyte"]
+[ext_resource type="Material" uid="uid://blmyhmyhrhs8m" path="res://assets/materials/body.tres" id="2_jfqv7"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hvlkw"]
+top_radius = 0.4
+height = 0.8
+radial_segments = 8
 
 [sub_resource type="SphereMesh" id="SphereMesh_tf6pd"]
 radial_segments = 8
@@ -23,6 +28,11 @@ height = 1.82974
 
 [node name="NPC" type="StaticBody3D"]
 script = ExtResource("1_lcey8")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.401762, 0)
+material_override = ExtResource("2_jfqv7")
+mesh = SubResource("CylinderMesh_hvlkw")
 
 [node name="Head" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31599, 0)
@@ -54,9 +64,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.709, 0, 0)
 material_override = ExtResource("2_caa5o")
 mesh = SubResource("SphereMesh_tq0rk")
 skeleton = NodePath("../..")
-
-[node name="body" parent="." instance=ExtResource("3_5gyte")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.393884, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.915642, 0)
