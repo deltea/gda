@@ -8,9 +8,19 @@ const HAND_SPEED = 20.0
 const WADDLE_SPEED = 20.0
 const WADDLE_MAGNITUDE = 7.0
 const WADDLE_RESET_SPEED = 10.0
+const IDLE_SPEED = 5.0
+const IDLE_MAGNITUDE = 0.03
 
 @onready var visuals: Node3D = $Visuals
+@onready var head: MeshInstance3D = $Visuals/Head
 @onready var hands: Node3D = $Visuals/Hands
+
+var original_head_pos: Vector3
+var original_hands_pos: Vector3
+
+func _ready() -> void:
+	original_head_pos = head.position
+	original_hands_pos = hands.global_position
 
 func _physics_process(delta: float) -> void:
 	# add the gravity
@@ -42,7 +52,10 @@ func _physics_process(delta: float) -> void:
 
 		visuals.rotation_degrees.z = lerp(visuals.rotation_degrees.z, 0.0, WADDLE_RESET_SPEED * delta)
 
-	# add lag to hands
+		if is_on_floor():
+			head.position.y = original_head_pos.y + sin(Clock.time * IDLE_SPEED) * IDLE_MAGNITUDE
+
+	# make hands follow body
 	hands.global_position = hands.global_position.lerp(visuals.global_position, 1)#HAND_SPEED * delta)
 	hands.global_rotation.y = lerp_angle(hands.global_rotation.y, visuals.rotation.y, HAND_SPEED * delta)
 
