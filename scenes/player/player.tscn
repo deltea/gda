@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://cj7sapwng7yb2"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_a6dmb"]
+[ext_resource type="Material" uid="uid://ckwuqgp8pu4tw" path="res://assets/materials/player.tres" id="2_scdp1"]
+[ext_resource type="PackedScene" uid="uid://cc32maia2u251" path="res://assets/models/body.blend" id="3_jimgr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gt0bm"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jjqgf"]
+radial_segments = 8
+
+[sub_resource type="PrismMesh" id="PrismMesh_1bbcs"]
+size = Vector3(0.4, 0.4, 0.2)
+
+[sub_resource type="SphereMesh" id="SphereMesh_7texg"]
+radius = 0.25
+height = 0.5
+radial_segments = 8
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_a6dmb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.528037, 0)
+shape = SubResource("CapsuleShape3D_gt0bm")
+
+[node name="Visuals" type="Node3D" parent="."]
+
+[node name="body" parent="Visuals" instance=ExtResource("3_jimgr")]
+
+[node name="Head" type="MeshInstance3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05226, 0)
+material_override = ExtResource("2_scdp1")
+mesh = SubResource("SphereMesh_jjqgf")
+
+[node name="EarLeft" type="MeshInstance3D" parent="Visuals/Head"]
+transform = Transform3D(0.873772, -0.486335, 0, 0.486335, 0.873772, 0, 0, 0, 1, -0.322, 0.575, 0)
+material_override = ExtResource("2_scdp1")
+mesh = SubResource("PrismMesh_1bbcs")
+
+[node name="EarRight" type="MeshInstance3D" parent="Visuals/Head"]
+transform = Transform3D(0.873772, 0.486335, 0, -0.486335, 0.873772, 0, 0, 0, 1, 0.322, 0.575, 0)
+material_override = ExtResource("2_scdp1")
+mesh = SubResource("PrismMesh_1bbcs")
+
+[node name="Hands" type="Node3D" parent="Visuals"]
+top_level = true
+
+[node name="HandLeft" type="MeshInstance3D" parent="Visuals/Hands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.709, 0, 0)
+material_override = ExtResource("2_scdp1")
+mesh = SubResource("SphereMesh_7texg")
+skeleton = NodePath("../..")
+
+[node name="HandLeft2" type="MeshInstance3D" parent="Visuals/Hands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.709, 0, 0)
+material_override = ExtResource("2_scdp1")
+mesh = SubResource("SphereMesh_7texg")
+skeleton = NodePath("../..")

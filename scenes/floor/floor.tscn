@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://duuf22shv8vqy"]
+
+[ext_resource type="Material" uid="uid://iyqnd5n25w1s" path="res://assets/materials/floor.tres" id="1_lmop0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dswte"]
+friction = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_inq7x"]
+lightmap_size_hint = Vector2i(502, 502)
+material = ExtResource("1_lmop0")
+size = Vector2(100, 100)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_i6lkj"]
+
+[node name="Floor" type="StaticBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_dswte")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_lmop0")
+mesh = SubResource("PlaneMesh_inq7x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("WorldBoundaryShape3D_i6lkj")
