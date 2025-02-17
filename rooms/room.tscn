@@ -11,4 +11,4 @@ environment = ExtResource("2_h0kjy")
 
 [node name="DirectionalLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 5.66772, 0)
-light_energy = 2.0
+light_energy = 1.5

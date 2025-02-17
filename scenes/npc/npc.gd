@@ -28,7 +28,9 @@ func _process(delta: float) -> void:
 		head.rotation.y = lerp_angle(head.rotation.y, 0, LOOK_SPEED * delta)
 
 func _on_notice_area_body_entered(body: Node3D) -> void:
-	if body is Player: noticing = true
+	if body is Player:
+		noticing = true
+		
 
 func _on_notice_area_body_exited(body: Node3D) -> void:
 	if body is Player: noticing = false

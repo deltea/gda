@@ -71,7 +71,7 @@ diffuse_curve={
 }
 fresnel_smoothness={
 "type": "float",
-"value": 0.05
+"value": 0.0
 }
 outline_color={
 "type": "color",
@@ -83,5 +83,5 @@ outline_width={
 }
 specular_smoothness={
 "type": "float",
-"value": 0.05
+"value": 0.0
 }

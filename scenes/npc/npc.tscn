@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/npc/npc.gd" id="1_lcey8"]
 [ext_resource type="Material" uid="uid://bxv0fyffvtfy8" path="res://assets/materials/npc.tres" id="2_caa5o"]
-[ext_resource type="Material" uid="uid://blmyhmyhrhs8m" path="res://assets/materials/body.tres" id="2_jfqv7"]
+[ext_resource type="Material" uid="uid://blmyhmyhrhs8m" path="res://assets/materials/shirt.tres" id="2_jfqv7"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_hvlkw"]
 top_radius = 0.4
@@ -54,7 +54,6 @@ mesh = SubResource("CylinderMesh_7jer4")
 
 [node name="Hands" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.393884, 0)
-top_level = true
 
 [node name="HandLeft" type="MeshInstance3D" parent="Hands"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.709, 0, 0)
@@ -76,6 +75,8 @@ shape = SubResource("CapsuleShape3D_0nvu2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NoticeArea"]
 shape = SubResource("SphereShape3D_68dfb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [connection signal="body_entered" from="NoticeArea" to="." method="_on_notice_area_body_entered"]
 [connection signal="body_exited" from="NoticeArea" to="." method="_on_notice_area_body_exited"]

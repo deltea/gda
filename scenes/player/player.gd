@@ -1,8 +1,8 @@
 class_name Player extends CharacterBody3D
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
-const GRAVITY = 9.0
+const JUMP_VELOCITY = 10.0
+const GRAVITY = 20.0
 const ROTATION_SPEED = 10.0
 const HAND_SPEED = 20.0
 const WADDLE_SPEED = 20.0

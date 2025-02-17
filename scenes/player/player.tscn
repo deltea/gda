@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cj7sapwng7yb2"]
+[gd_scene load_steps=9 format=3 uid="uid://cj7sapwng7yb2"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_a6dmb"]
 [ext_resource type="Material" uid="uid://ckwuqgp8pu4tw" path="res://assets/materials/player.tres" id="2_scdp1"]
 [ext_resource type="PackedScene" uid="uid://cc32maia2u251" path="res://assets/models/body.blend" id="3_jimgr"]
+[ext_resource type="Material" uid="uid://bdvdckbskf6bw" path="res://assets/materials/body.tres" id="3_tannp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gt0bm"]
 
@@ -28,6 +29,9 @@ shape = SubResource("CapsuleShape3D_gt0bm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.400502, 0)
 
 [node name="body" parent="Visuals" instance=ExtResource("3_jimgr")]
+
+[node name="Cylinder" parent="Visuals/body" index="0"]
+material_override = ExtResource("3_tannp")
 
 [node name="Head" type="MeshInstance3D" parent="Visuals"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.918759, 0)
@@ -58,3 +62,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.531, 0, 0)
 material_override = ExtResource("2_scdp1")
 mesh = SubResource("SphereMesh_7texg")
 skeleton = NodePath("../..")
+
+[editable path="Visuals/body"]
