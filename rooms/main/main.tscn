@@ -20,6 +20,7 @@ target = NodePath("../Player")
 [node name="Floor" parent="." index="3" instance=ExtResource("3_3x55r")]
 
 [node name="Player" parent="." index="4" instance=ExtResource("4_myt0x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.63621)
 
 [node name="NPC" parent="." index="5" instance=ExtResource("6_i72np")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8157, 0, -3.03143)

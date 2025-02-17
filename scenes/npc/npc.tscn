@@ -1,8 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://6rivbevts6s5"]
+[gd_scene load_steps=21 format=3 uid="uid://6rivbevts6s5"]
 
 [ext_resource type="Script" path="res://scenes/npc/npc.gd" id="1_lcey8"]
 [ext_resource type="Material" uid="uid://bxv0fyffvtfy8" path="res://assets/materials/npc.tres" id="2_caa5o"]
 [ext_resource type="Material" uid="uid://blmyhmyhrhs8m" path="res://assets/materials/shirt.tres" id="2_jfqv7"]
+[ext_resource type="PackedScene" uid="uid://p7h6uabhfrva" path="res://scenes/dialogue/dialogue.tscn" id="4_u6lsc"]
+[ext_resource type="Script" path="res://scripts/DialogueLineResource.gd" id="5_tmhi3"]
+[ext_resource type="Script" path="res://scripts/DialogueResource.gd" id="6_k7ett"]
+[ext_resource type="AudioStream" uid="uid://dudjx5hc70mkw" path="res://assets/sounds/bop.wav" id="7_ppgn8"]
+[ext_resource type="Script" path="res://scripts/AlphabetSoundResource.gd" id="8_liq86"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_hvlkw"]
 top_radius = 0.4
@@ -28,6 +33,60 @@ height = 1.82974
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_68dfb"]
 radius = 5.0
+
+[sub_resource type="Resource" id="Resource_wkeqw"]
+script = ExtResource("5_tmhi3")
+extra_duration = 0.5
+text = "whats up"
+
+[sub_resource type="Resource" id="Resource_c6l40"]
+script = ExtResource("5_tmhi3")
+extra_duration = 0.5
+text = "heyyy"
+
+[sub_resource type="Resource" id="Resource_fp6ap"]
+script = ExtResource("5_tmhi3")
+extra_duration = 0.5
+text = "blahblah"
+
+[sub_resource type="Resource" id="Resource_4t3cb"]
+script = ExtResource("5_tmhi3")
+extra_duration = 0.5
+text = "bom bom bom"
+
+[sub_resource type="Resource" id="Resource_prrt7"]
+script = ExtResource("8_liq86")
+a = ExtResource("7_ppgn8")
+b = ExtResource("7_ppgn8")
+c = ExtResource("7_ppgn8")
+d = ExtResource("7_ppgn8")
+e = ExtResource("7_ppgn8")
+f = ExtResource("7_ppgn8")
+g = ExtResource("7_ppgn8")
+h = ExtResource("7_ppgn8")
+i = ExtResource("7_ppgn8")
+j = ExtResource("7_ppgn8")
+k = ExtResource("7_ppgn8")
+l = ExtResource("7_ppgn8")
+m = ExtResource("7_ppgn8")
+n = ExtResource("7_ppgn8")
+o = ExtResource("7_ppgn8")
+p = ExtResource("7_ppgn8")
+q = ExtResource("7_ppgn8")
+r = ExtResource("7_ppgn8")
+s = ExtResource("7_ppgn8")
+t = ExtResource("7_ppgn8")
+u = ExtResource("7_ppgn8")
+v = ExtResource("7_ppgn8")
+w = ExtResource("7_ppgn8")
+x = ExtResource("7_ppgn8")
+y = ExtResource("7_ppgn8")
+z = ExtResource("7_ppgn8")
+
+[sub_resource type="Resource" id="Resource_yn4fw"]
+script = ExtResource("6_k7ett")
+lines = Array[ExtResource("5_tmhi3")]([SubResource("Resource_wkeqw"), SubResource("Resource_c6l40"), SubResource("Resource_fp6ap"), SubResource("Resource_4t3cb")])
+sounds = SubResource("Resource_prrt7")
 
 [node name="NPC" type="StaticBody3D"]
 script = ExtResource("1_lcey8")
@@ -76,7 +135,10 @@ shape = SubResource("CapsuleShape3D_0nvu2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NoticeArea"]
 shape = SubResource("SphereShape3D_68dfb")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Dialogue" parent="." instance=ExtResource("4_u6lsc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14742, 0)
+text = ""
+dialogue = SubResource("Resource_yn4fw")
 
 [connection signal="body_entered" from="NoticeArea" to="." method="_on_notice_area_body_entered"]
 [connection signal="body_exited" from="NoticeArea" to="." method="_on_notice_area_body_exited"]

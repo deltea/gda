@@ -3,10 +3,11 @@ class_name NPC extends StaticBody3D
 const HANDS_OFFSET = Vector3(0, 0.5, 0)
 const IDLE_SPEED = 5.0
 const IDLE_MAGNITUDE = 0.03
-const LOOK_SPEED = 5.0
+const LOOK_SPEED = 10.0
 
 @onready var head: MeshInstance3D = $Head
 @onready var hands: Node3D = $Hands
+@onready var dialogue: Dialogue = $Dialogue
 
 var original_head_pos: Vector3
 var noticing = false
@@ -30,7 +31,9 @@ func _process(delta: float) -> void:
 func _on_notice_area_body_entered(body: Node3D) -> void:
 	if body is Player:
 		noticing = true
-		
+		dialogue.enable()
 
 func _on_notice_area_body_exited(body: Node3D) -> void:
-	if body is Player: noticing = false
+	if body is Player:
+		noticing = false
+		dialogue.disable()

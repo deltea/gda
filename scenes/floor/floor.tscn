@@ -8,7 +8,7 @@ friction = 0.0
 [sub_resource type="PlaneMesh" id="PlaneMesh_inq7x"]
 lightmap_size_hint = Vector2i(502, 502)
 material = ExtResource("1_lmop0")
-size = Vector2(100, 100)
+size = Vector2(200, 200)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_i6lkj"]
 

@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=3 uid="uid://p7h6uabhfrva"]
+
+[ext_resource type="Script" path="res://scenes/dialogue/dialogue.gd" id="1_cva5t"]
+[ext_resource type="FontFile" uid="uid://b2oloipvndnr2" path="res://assets/fonts/source-code-pro.ttf" id="1_gy2nr"]
+[ext_resource type="Script" path="res://scripts/DialogueLineResource.gd" id="3_undr3"]
+[ext_resource type="Script" path="res://scripts/DialogueResource.gd" id="4_qtiu1"]
+
+[sub_resource type="FontVariation" id="FontVariation_xl1iw"]
+base_font = ExtResource("1_gy2nr")
+variation_opentype = {
+2003265652: 600
+}
+spacing_glyph = 4
+
+[sub_resource type="Resource" id="Resource_qdfv2"]
+script = ExtResource("3_undr3")
+extra_duration = 0.5
+text = "helooo"
+
+[sub_resource type="Resource" id="Resource_0uy7t"]
+script = ExtResource("4_qtiu1")
+lines = Array[ExtResource("3_undr3")]([SubResource("Resource_qdfv2")])
+
+[node name="Dialogue" type="Label3D"]
+text = "wfefwqefqwef"
+font = SubResource("FontVariation_xl1iw")
+font_size = 96
+outline_size = 0
+script = ExtResource("1_cva5t")
+dialogue = SubResource("Resource_0uy7t")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+max_polyphony = 10
